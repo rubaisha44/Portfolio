@@ -20,7 +20,6 @@
       line-height: 1.5;
       overflow-x: hidden;
       width: 100%;
-      position: relative;
     }
 
     /* DARK MODE */
@@ -29,23 +28,16 @@
       color: #eef2ff;
     }
 
-    /* CONTAINER - FIXED: NO OVERFLOW */
+    /* CONTAINER - PROPERLY FIXED */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       width: 90%;
       margin: 0 auto;
-      overflow-x: hidden;
     }
 
     @media (max-width: 768px) {
       .container {
         width: 92%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: 94%;
       }
     }
 
@@ -72,10 +64,6 @@
       background: #4f46e5;
       color: white;
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
 
     /* NAVBAR */
     .navbar {
@@ -94,7 +82,7 @@
       border-bottom-color: #2a2a38;
     }
     .nav-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       width: 90%;
       margin: 0 auto;
       display: flex;
@@ -138,7 +126,7 @@
       cursor: pointer;
     }
 
-    /* HERO - FIXED: NO OVERFLOW */
+    /* HERO */
     .hero {
       padding: 120px 0 60px;
       min-height: 100vh;
@@ -148,7 +136,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 50px;
       align-items: center;
     }
     .hero-badge {
@@ -181,61 +169,118 @@
       flex-wrap: wrap;
     }
 
-    /* SIMPLE INFO CARDS - NO POSITION ABSOLUTE OVERFLOW */
-    .info-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-    .info-card {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-      border: 1px solid #eef2ff;
-      transition: 0.2s;
+    /* ===== STACK CARDS - FIXED VERSION (NO OVERFLOW) ===== */
+    .stack-wrapper {
+      position: relative;
       width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      min-height: 380px;
     }
-    body.dark .info-card {
-      background: #161626;
-      border-color: #2a2a38;
+    .stack-cards {
+      position: relative;
+      width: 100%;
+      height: 380px;
     }
-    .info-card:hover {
-      transform: translateX(5px);
+    .stack-card {
+      position: absolute;
+      width: 85%;
+      max-width: 320px;
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
-    .info-card i {
-      font-size: 28px;
-      color: #4f46e5;
-      margin-bottom: 12px;
+    body.dark .stack-card:not(.card-special) {
+      background: #1a1a28;
+    }
+    .card-special {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+    }
+    .stack-card i {
+      font-size: 32px;
+      margin-bottom: 15px;
       display: block;
     }
-    .info-card h3 {
+    .stack-card h3 {
       font-size: 18px;
       margin-bottom: 6px;
+      font-weight: 700;
     }
-    .info-card p {
-      font-size: 13px;
-      color: #6b6b89;
+    .stack-card p {
+      font-size: 12px;
+      opacity: 0.8;
       margin: 0;
     }
-    body.dark .info-card p {
-      color: #9a9ab0;
+    .card-special p {
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Card Positions */
+    .card-pos1 {
+      top: 0;
+      right: 0;
+      z-index: 3;
+      transform: rotate(5deg);
+    }
+    .card-pos2 {
+      bottom: 20px;
+      left: 0;
+      z-index: 2;
+      transform: rotate(-6deg);
+    }
+    .card-pos3 {
+      top: 60px;
+      left: 20px;
+      z-index: 1;
+      transform: rotate(3deg);
+    }
+
+    /* Hover Animation */
+    .stack-card:hover {
+      transform: translateY(-8px) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
     }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 36px; }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
       }
-      .info-cards {
+      .stack-wrapper {
         max-width: 100%;
+        min-height: 340px;
       }
+      .stack-cards {
+        height: 340px;
+      }
+      .stack-card {
+        width: 280px;
+        padding: 18px;
+      }
+      .card-pos1 { right: 10px; }
+      .card-pos2 { left: 10px; }
+      .card-pos3 { left: 30px; top: 50px; }
     }
 
-    /* PROJECTS SECTION */
+    @media (max-width: 480px) {
+      .stack-card {
+        width: 260px;
+        padding: 16px;
+      }
+      .stack-card i { font-size: 28px; }
+      .stack-card h3 { font-size: 16px; }
+      .card-pos1 { right: 5px; }
+      .card-pos2 { left: 5px; bottom: 15px; }
+      .card-pos3 { left: 20px; top: 40px; }
+    }
+
+    /* PROJECTS */
     .projects {
       background: white;
       padding: 70px 0;
@@ -256,7 +301,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      width: 100%;
     }
     .project-card {
       background: #fafbff;
@@ -264,7 +308,6 @@
       padding: 24px;
       transition: 0.2s;
       border: 1px solid #eef2ff;
-      width: 100%;
     }
     body.dark .project-card {
       background: #14141f;
@@ -331,7 +374,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 12px;
-      width: 100%;
     }
     .skill {
       background: white;
@@ -345,14 +387,10 @@
       justify-content: center;
       gap: 8px;
       border: 1px solid #eef2ff;
-      white-space: nowrap;
     }
     body.dark .skill {
       background: #14141f;
       border-color: #262632;
-    }
-    @media (max-width: 560px) {
-      .skill { white-space: normal; font-size: 12px; }
     }
 
     /* CONTACT */
@@ -393,7 +431,6 @@
       font-size: 24px;
     }
 
-    /* FOOTER */
     .footer {
       text-align: center;
       padding: 30px;
@@ -425,21 +462,6 @@
       .menu-btn {
         display: block;
       }
-      .contact-box {
-        padding: 25px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .contact-box {
-        padding: 20px;
-      }
-      .btn {
-        padding: 10px 20px;
-      }
-      .project-card {
-        padding: 18px;
-      }
     }
   </style>
 </head>
@@ -458,7 +480,7 @@
     </div>
   </nav>
 
-  <!-- HERO - NO POSITION ABSOLUTE CARDS -->
+  <!-- HERO WITH STACK CARDS ANIMATION -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
@@ -474,22 +496,25 @@
           <span><i class="far fa-clock"></i> 3+ years</span>
         </div>
       </div>
-      <!-- SIMPLE CARDS - NO ABSOLUTE POSITIONING -->
-      <div class="info-cards">
-        <div class="info-card">
-          <i class="fas fa-star"></i>
-          <h3>UI exploration</h3>
-          <p>Figma → code with pixel-perfect precision</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-cube"></i>
-          <h3>Component library</h3>
-          <p>React + Tailwind, reusable components</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-bolt"></i>
-          <h3>Performance first</h3>
-          <p>Lighthouse 100, fast loading websites</p>
+      
+      <!-- STACK CARDS - ORIGINAL STYLE, FIXED POSITIONING -->
+      <div class="stack-wrapper">
+        <div class="stack-cards">
+          <div class="stack-card card-pos1 card-special">
+            <i class="fas fa-star"></i>
+            <h3>UI exploration</h3>
+            <p>Figma → pixel-perfect code</p>
+          </div>
+          <div class="stack-card card-pos2">
+            <i class="fas fa-cube"></i>
+            <h3>Component library</h3>
+            <p>React + Tailwind, reusable</p>
+          </div>
+          <div class="stack-card card-pos3">
+            <i class="fas fa-bolt"></i>
+            <h3>Performance first</h3>
+            <p>Lighthouse 100, fast loading</p>
+          </div>
         </div>
       </div>
     </div>
@@ -609,11 +634,9 @@
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
-    }
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
