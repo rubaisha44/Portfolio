@@ -27,21 +27,16 @@
       color: #eef2ff;
     }
 
+    /* CONTAINER - PROPER RESPONSIVE */
     .container {
       max-width: 1200px;
       width: 90%;
       margin: 0 auto;
     }
 
-    @media (max-width: 1024px) {
-      .container {
-        width: 92%;
-      }
-    }
-
     @media (max-width: 768px) {
       .container {
-        width: 94%;
+        width: 92%;
       }
     }
 
@@ -54,10 +49,10 @@
       font-weight: 600;
       border-radius: 50px;
       text-decoration: none;
-      border: none;
-      cursor: pointer;
       font-size: 14px;
       transition: 0.2s;
+      border: none;
+      cursor: pointer;
     }
     .btn-outline {
       background: transparent;
@@ -129,7 +124,7 @@
       cursor: pointer;
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       padding: 110px 0 60px;
       min-height: 100vh;
@@ -153,7 +148,7 @@
       margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: clamp(32px, 6vw, 48px);
+      font-size: 48px;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 16px;
@@ -170,146 +165,95 @@
       flex-wrap: wrap;
     }
 
-    /* STACK CARDS - ALL 3 WORKING PERFECTLY */
+    /* STACK CARDS - FIXED RESPONSIVE */
     .stack-wrapper {
       position: relative;
       width: 100%;
-      max-width: 400px;
+      max-width: 380px;
       margin: 0 auto;
-      min-height: 380px;
+      min-height: 340px;
     }
     .stack-cards {
       position: relative;
       width: 100%;
-      height: 380px;
+      height: 340px;
     }
     .stack-card {
       position: absolute;
-      width: 85%;
-      max-width: 320px;
+      width: 280px;
       background: white;
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.12);
       transition: all 0.3s ease;
       cursor: pointer;
     }
-    body.dark .stack-card:not(.card-special) {
-      background: #1a1a28;
-      color: #eef2ff;
-    }
+    body.dark .stack-card:not(.card-special) { background: #1a1a28; }
     .card-special {
       background: linear-gradient(135deg, #4f46e5, #7c3aed);
       color: white;
     }
-    .stack-card i {
-      font-size: 32px;
-      margin-bottom: 15px;
-      display: block;
-    }
-    .stack-card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-    .stack-card p {
-      font-size: 12px;
-      opacity: 0.85;
-      margin: 0;
-      line-height: 1.4;
-    }
-    /* Card 1 - Top Right (Purple Gradient) */
-    .card-pos1 {
-      top: 0;
-      right: 0;
-      z-index: 3;
-      transform: rotate(5deg);
-    }
-    /* Card 2 - Bottom Left */
-    .card-pos2 {
-      bottom: 20px;
-      left: 0;
-      z-index: 2;
-      transform: rotate(-6deg);
-    }
-    /* Card 3 - Middle Left (FIXED - Now visible properly) */
-    .card-pos3 {
-      top: 55px;
-      left: 25px;
-      z-index: 1;
-      transform: rotate(3deg);
-    }
+    .stack-card i { font-size: 28px; margin-bottom: 12px; display: block; }
+    .stack-card h3 { font-size: 17px; margin-bottom: 6px; font-weight: 700; }
+    .stack-card p { font-size: 11px; opacity: 0.8; margin: 0; line-height: 1.4; }
+    
+    /* Card Positions */
+    .card-pos1 { top: 0; right: 0; z-index: 3; transform: rotate(4deg); }
+    .card-pos2 { bottom: 15px; left: 0; z-index: 2; transform: rotate(-5deg); }
+    .card-pos3 { top: 45px; left: 20px; z-index: 1; transform: rotate(2deg); }
+    
     .stack-card:hover {
-      transform: translateY(-8px) rotate(0deg) !important;
+      transform: translateY(-6px) rotate(0deg) !important;
       z-index: 10;
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
     }
 
+    /* Responsive Stack Cards */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
         gap: 35px;
       }
+      .hero h1 { font-size: 36px; }
       .stack-wrapper {
         max-width: 100%;
-        min-height: 340px;
+        min-height: 300px;
       }
-      .stack-cards {
-        height: 340px;
-      }
-      .stack-card {
-        width: 280px;
-        padding: 18px;
-      }
-      .card-pos1 { 
-        top: 0;
-        right: 5%;
-      }
-      .card-pos2 { 
-        bottom: 15px;
-        left: 5%;
-      }
-      .card-pos3 { 
-        top: 45px;
-        left: 12%;
-      }
+      .stack-cards { height: 300px; }
+      .stack-card { width: 260px; padding: 16px; }
+      .card-pos1 { right: 5%; top: 0; }
+      .card-pos2 { left: 5%; bottom: 10px; }
+      .card-pos3 { left: 12%; top: 35px; }
     }
 
     @media (max-width: 550px) {
-      .stack-card {
-        width: 240px;
-        padding: 16px;
-      }
-      .stack-card i { font-size: 26px; }
-      .stack-card h3 { font-size: 16px; }
-      .stack-card p { font-size: 11px; }
+      .stack-card { width: 220px; padding: 14px; }
+      .stack-card i { font-size: 24px; }
+      .stack-card h3 { font-size: 15px; }
       .card-pos1 { right: 2%; }
       .card-pos2 { left: 2%; }
-      .card-pos3 { left: 8%; top: 40px; }
+      .card-pos3 { left: 8%; top: 30px; }
     }
 
     @media (max-width: 450px) {
-      .stack-card {
-        width: 210px;
-        padding: 14px;
-      }
-      .stack-cards { height: 310px; }
-      .stack-wrapper { min-height: 310px; }
+      .stack-card { width: 200px; padding: 12px; }
+      .stack-cards { height: 280px; }
+      .stack-wrapper { min-height: 280px; }
     }
 
-    /* Projects Grid - 3 in a row */
+    /* PROJECTS - 3 IN A ROW ON DESKTOP */
     .projects {
       background: white;
       padding: 60px 0;
     }
     body.dark .projects { background: #0f0f1a; }
     .section-title {
-      font-size: clamp(28px, 5vw, 36px);
+      font-size: 32px;
       font-weight: 700;
       margin-bottom: 35px;
       text-align: center;
     }
     
+    /* Grid: 3 columns on desktop, 2 on tablet, 1 on mobile */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -328,6 +272,7 @@
         grid-template-columns: 1fr;
         gap: 18px;
       }
+      .section-title { font-size: 28px; }
     }
     
     .project-card {
@@ -485,7 +430,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Stack Cards - ALL 3 WORKING -->
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
@@ -502,22 +447,19 @@
         </div>
       </div>
       
-      <!-- STACK CARDS - ALL THREE VISIBLE AND PROPER -->
+      <!-- STACK CARDS - ALL 3 WORKING, RESPONSIVE -->
       <div class="stack-wrapper">
         <div class="stack-cards">
-          <!-- Card 1: Purple Gradient (UI exploration) -->
           <div class="stack-card card-pos1 card-special">
             <i class="fas fa-star"></i>
             <h3>UI exploration</h3>
             <p>Figma → pixel-perfect code</p>
           </div>
-          <!-- Card 2: Component Library -->
           <div class="stack-card card-pos2">
             <i class="fas fa-cube"></i>
             <h3>Component library</h3>
             <p>React + Tailwind, reusable components</p>
           </div>
-          <!-- Card 3: Performance First (FIXED - Now properly visible) -->
           <div class="stack-card card-pos3">
             <i class="fas fa-bolt"></i>
             <h3>Performance first</h3>
@@ -528,7 +470,7 @@
     </div>
   </section>
 
-  <!-- Projects Section - 6 Projects, 3 per row -->
+  <!-- Projects - 6 Projects, 3 per row -->
   <section class="projects" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
@@ -628,7 +570,7 @@
   </footer>
 
   <script>
-    // Dark mode toggle
+    // Dark mode
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark');
@@ -642,7 +584,7 @@
       }
     });
 
-    // Mobile menu toggle
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     if(menuBtn) {
